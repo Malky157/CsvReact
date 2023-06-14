@@ -33,7 +33,6 @@ namespace Homework6._12.Web.Controllers
         {
             string base64 = upload.Base64.Substring(upload.Base64.IndexOf(",") + 1);
             byte[] csvBytes = Convert.FromBase64String(base64);
-            System.IO.File.WriteAllBytes($"uploads/{upload.Name}", csvBytes);
             var people = GetCsvFromBytes(csvBytes);
             var pr = new PersonRepository(_connectionString);
             pr.Add(people);
